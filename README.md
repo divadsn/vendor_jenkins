@@ -33,7 +33,7 @@ Enjoy!
 
 ### Customise kernel's version string
 
-For details, please refer to [this article](http://tjworld.net/wiki/linux/kernel/build/customiseversionstring)
+For details, please refer to [this article over at tjworld.net](http://tjworld.net/wiki/linux/kernel/build/customiseversionstring)
 
 The three scripts are placed in `utils`. Once copied into their respective locations they should be given executable permissions:
 
@@ -53,4 +53,11 @@ echo "build" > $HOME/linux-compile-host
 
 With the scripts installed and configured all that is left is to do a kernel build as usual. If necessary, remove the existing include/generated/compile.h before starting the build.
 
+### Repo package installation
 
+The `repo` binary is already available in `utils`, just install it by typing following commands:
+
+```bash
+sudo cp utils/repo /usr/local/bin/
+sudo chmod a+x /usr/local/bin/repo
+```
