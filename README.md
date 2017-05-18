@@ -28,8 +28,6 @@ Change `JENKINS_HOME` to the directory where your workspace is stored.
 If running Arch Linux, please enable multilib, and install yaourt, before running the script.
 Please choose the name dependending on the distro you have.
 
-Enjoy!
-
 
 ### Customise kernel's version string
 
@@ -51,7 +49,7 @@ echo "jenkins" > $HOME/linux-compile-by
 echo "build" > $HOME/linux-compile-host
 ```
 
-With the scripts installed and configured all that is left is to do a kernel build as usual. If necessary, remove the existing include/generated/compile.h before starting the build.
+With the scripts installed and configured all that is left is to do a kernel build as usual. If necessary, remove the existing `include/generated/compile.h` before starting the build.
 
 ### Repo package installation
 
@@ -61,3 +59,5 @@ The `repo` binary is already available in `utils`, just install it by typing fol
 sudo cp utils/repo /usr/local/bin/
 sudo chmod a+x /usr/local/bin/repo
 ```
+
+Enjoy!
