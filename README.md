@@ -29,3 +29,28 @@ If running Arch Linux, please enable multilib, and install yaourt, before runnin
 Please choose the name dependending on the distro you have.
 
 Enjoy!
+
+
+### Customise kernel's version string
+
+For details, please refer to [this article](http://tjworld.net/wiki/linux/kernel/build/customiseversionstring)
+
+The three scripts are placed in `utils`. Once copied into their respective locations they should be given executable permissions:
+
+```bash
+sudo cp utils/whoami /usr/local/bin/
+sudo cp utils/hostname /usr/local/bin/
+sudo cp utils/gcc /usr/local/sbin/
+sudo chmod a+x /usr/local/bin/whoami /usr/local/bin/hostname /usr/local/sbin/gcc
+```
+
+Create the custom value files in the user home directory:
+
+```bash
+echo "jenkins" > $HOME/linux-compile-by
+echo "build" > $HOME/linux-compile-host
+```
+
+With the scripts installed and configured all that is left is to do a kernel build as usual. If necessary, remove the existing include/generated/compile.h before starting the build.
+
+
