@@ -1,0 +1,25 @@
+#!/bin/sh
+# gcc redirector for Linux kernel builds
+# (c) Copyright 2011 TJ <linux@tjworld.net>
+# Licensed on terms of the General Public License, version 3
+#
+# removes superfluous gcc version information from the kernel's scripts/mkcompile_h call to
+# $(CC)gcc -v
+# Install in PATH (suggest /usr/local/sbin) to come before any other search path entries
+
+# get the current path and remove the directory containing this script so the real
+# gcc can be called and its output filtered
+DIRNAME=$(dirname $0)
+NEWPATH=$(IFS=:; for dir in $PATH; do if [ "$dir" != "$DIRNAME" ]; then echo -n "${dir}:"; fi; done)
+
+if ps -p $PPID -o args= | grep -q mkcompile_h; then
+ # check only the last argument for the expected flag
+ if [ "${@:${#@}}" == "-v" ]; then
+  PATH=$NEWPATH gcc "$@" 2>&1 | sed 's/^\(gcc version.*\).(.*/\1/'
+  exit 0
+ fi
+fi
+
+# default is to execute the system command
+PATH=$NEWPATH gcc "$@"
+
